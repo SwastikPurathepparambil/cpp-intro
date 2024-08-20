@@ -178,6 +178,15 @@ int main() {
         std::cout << "Successfully allocated memory for scores."<< std::endl;
         
         //Print out elements. Can use regular array access notation, or pointer arithmetic
+        // Pointer arithmetic is pretty much just array traversing
+        // int a[10];                           // a is effectively a pointer to the first element of the array
+        // int b[10];                           // b is also effectively a pointer
+        // std::cout << a << std::endl;         // writes the address of a[0]
+        // std::cout << (a + 1) << std::endl;   // writes the address of a[1]
+        // *(a + 1) = 3;                        // stores 3 in a[1]
+        // std::cout << (a - 1) << std::endl;   // writes the address of a[-1]
+        // std::cout << (a - b) << std::endl;   // writes the distance in memory between a[0] and b[0] (divided by the size of an int)
+        
         for( size_t i{}; i < size ; ++i){
            std::cout << "value : " << p_scores[i] << " : " << *(p_scores + i) << std::endl; 
         }
@@ -209,10 +218,6 @@ int main() {
        std::cout << "value : " << s << std::endl;
    }
    */
-
-
-
-
 
 
     return 0;
