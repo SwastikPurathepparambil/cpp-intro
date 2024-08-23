@@ -54,8 +54,16 @@ double increment_multiply( double a ,double b){
     return result;
 }
 
+void say_age(int* age){ // Parameter
+    ++(*age); 
+    std::cout <<  "Hello , you are " << *age << " years old! &age : " << &age <<  std::endl;//24
+}
 
+void say_age2(int& age){ // Parameter
+    ++age; 
+    std::cout <<  "Hello , you are " << age << " years old! &age : " << &age <<  std::endl;//24
 
+}
 
 int main(){
     // Calling enter_bar
@@ -82,10 +90,34 @@ int main(){
 
     int a = 5;
     int b = 7;
+    // incr_mult definiton comes from operations.cpp
     int res = incr_mult(a,b);
     std::cout << "--------------" << std::endl;
     std::cout << "Result of incr_mult(a,b): " << res << std::endl;
 
+
+    // Pass by Value vs. Pointer vs. Reference
+    // Pass by Value is what we've been doing already
+    
+    // Pass by Pointer 
+    int age{23}; // Local
+    std::cout << "age (before call) : " << age << "&age : " << &age << std::endl; //23
+    say_age(&age); // Argument
+    std::cout << "age (after call) : " << age << "&age : " << &age <<  std::endl; //24
+    // Notice how the age variable outside the function also changes value
+
+
+    std::cout << "====================" << std::endl;
+    // Pass by Reference
+    int age2{23}; // Local
+    std::cout << "age (before call) : " << age2 << "&age : " << &age2 << std::endl; //23
+    say_age2(age2); // Argument
+    std::cout << "age (after call) : " << age2 << "&age : " << &age2 <<  std::endl; //24
+    // Similar to pointer, age variable outside also changes
+
+    // Sometimes the Compiler itself optimizes pass by value to pass by reference
+    // this is because you need to create a copy of the value for pass by value
+    // while you do not for pass by reference. Don't need to ever worry about this though
   
     return 0;
 }
