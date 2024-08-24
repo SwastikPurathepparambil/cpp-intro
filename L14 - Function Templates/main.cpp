@@ -86,5 +86,9 @@ int main() {
     const char* res = maximum(u,v);
 	cout << "max(const char*) : " << res << endl;
 
+    // ***********
+    // Could study Concepts, but not necessary for now, 
+    // and can revisit at a later date
+
     return 0;
 }
