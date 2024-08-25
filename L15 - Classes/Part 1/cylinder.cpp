@@ -1,7 +1,9 @@
 #ifndef CYLINDER_CPP
 #define CYLINDER_CPP
 
+#include <iostream>
 #include "constants.cpp"
+using namespace std;
 
 class Cylinder {
 
@@ -10,6 +12,7 @@ class Cylinder {
     private: 
         double height;
         double radius;
+        double*other_value {nullptr};
 
 
     public: 
@@ -23,11 +26,22 @@ class Cylinder {
         Cylinder() {
             height = 10;
             radius = 5;
+            // If we use dynamic memory allocation, will have to use destructors
+            // ex:
+            other_value = new double;
+            *other_value = 10;
         }
 
-        Cylinder(double h, double r) {
+        Cylinder(double h, double r, double o_val) {
             height = h;
             radius = r;
+            other_value = new double;
+            *other_value = o_val;
+        }
+
+        ~Cylinder() {
+            delete other_value;
+            cout << "other_value memory released in destructor" << endl;
         }
 
         double volume() {
